@@ -1,0 +1,5 @@
+a,b,c,d = map(int, input().split())
+res_a = min(c-a, a)
+res_b = min(d-b, b)
+res = min(res_a, res_b)
+print(res)
