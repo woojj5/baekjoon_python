@@ -1,14 +1,17 @@
 def solution(participant, completion):
-    dict = {}
+    dicta = {}
     for i in participant:
-        if i not in dict:
-            dict[i] = 1
+        if i not in dicta:
+            dicta[i] = 1
         else:
-            dict[i]+=1
+            dicta[i] +=1
     for i in completion:
-        dict[i] -=1
-    for i in dict:
-        if dict[i] > 0:
-            answer = i
-            break
+        if i in dicta and dicta[i] > 0:
+            dicta[i]-=1
+    answer = list()
+    
+    for i in dicta.keys():
+        if dicta[i] != 0:
+            answer.append(i)
+    answer = "".join(answer)
     return answer
