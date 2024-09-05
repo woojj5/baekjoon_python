@@ -1,9 +1,15 @@
 def solution(nums):
     answer = 0
-    l = len(nums)//2
-    s = set(nums)
-    if l <= len(s):
-        answer  = l
+    ind = len(nums)//2
+    dicta = {}
+    for i in nums:
+        if i not in dicta:
+            dicta[i] = 1
+        else:
+            dicta[i]+=1
+    lista = dicta.keys()
+    if len(lista) < ind:
+        answer  = len(lista)
     else:
-        answer = len(s)
+        answer = ind
     return answer
