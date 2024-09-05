@@ -1,12 +1,12 @@
 def solution(clothes):
-    dict  = {}
+    dicta = {}
     for i in clothes:
-        if i[1] not in dict:
-            dict[i[1]] = 1
+        if i[1] not in dicta:
+            dicta[i[1]] = 1
         else:
-            dict[i[1]] += 1
+            dicta[i[1]] += 1
     answer = 1
-    for i in dict.values():
-        answer *= (i+1)
-    answer-=1
+    for i in dicta.values():
+        answer = (answer) * (i+1)
+    answer -=1
     return answer
