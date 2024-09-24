@@ -1,11 +1,11 @@
 from itertools import permutations
 
 def solution(number, k):
-    #answer = ''
-    stack = []
+    st = []
+    cnt = k
     for i in number:
-        while stack and stack[-1] < i and k:
-            stack.pop()
-            k-=1
-        stack.append(i)
-    return ''.join(stack[:len(number)-k])
+        while st and cnt and st[-1] < i:
+            st.pop()
+            cnt-=1
+        st.append(i)
+    return ''.join(st[:len(number) - k])
