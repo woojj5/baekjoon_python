@@ -11,7 +11,6 @@ for i in lista:
 
 for i in range(n):
     while stack and dic[lista[stack[-1]]] < dic[lista[i]]:
-
         res[stack.pop()] = lista[i]
     stack.append(i)
 for i in res:
