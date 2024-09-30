@@ -1,33 +1,35 @@
 from collections import deque
 
-def dfs(s):
-    visit[s] = 1
-    print(s+1, end = " ")
-    for i in range(v):
-        if arr[s][i] == 1 and visit[i] == 0:
-            dfs(i)
+n, m , s = map(int, input().split())
+arr = [[0] * (n+1) for i in range(n+1)]
+for i in range(m):
+    a,b = map(int, input().split())
+    arr[a][b] = 1
+    arr[b][a] = 1
+
+visit = [0] * (n+1)
+visit1 = [0] * (n+1)
 
 def bfs(s):
-    q = deque()
-    q.append(s)
-    visit2[s] = 1
+    q = deque([s])
+    visit[s] = 1
     while q:
-        c = q.popleft()
-        print(c+1, end = " ")
-        for i in range(v):
-            if  visit2[i] == 0 and arr[c][i] == 1:
-                q.append(i) 
-                visit2[i] = 1   
+        x = q.popleft()
+        print(x, end = " ")
+        for i in range(1, n+1):
+            if visit[i] == 0 and arr[x][i] == 1:
+                q.append(i)
+                visit[i] = 1
 
-v, n, s = map(int, input().split())
-arr = [[0] * v for i in range(v)]
-#print(arr)
-visit = [0] * v
-visit2 = [0] * v
+def dfs(s):
+    visit1[s]  = 1
+    print(s, end = " ")
+    for i in range(1, n+1):
+        if visit1[i] == 0 and arr[s][i] == 1:
+            dfs(i)
 
-for t in range(n):
-    x,y =  map(int, input().split())
-    arr[x-1][y-1] = arr[y-1][x-1] =  1
-dfs(s-1)
+
+dfs(s)
 print()
-bfs(s-1)
+bfs(s)
+
