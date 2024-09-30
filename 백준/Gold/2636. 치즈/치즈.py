@@ -23,7 +23,7 @@ cheeze = []
 cnt = 0
 for i in range(n):
     cheeze.append(list(map(int, input().split())))
-    cnt+= sum(cheeze[i])
+cnt+= sum(map(sum, cheeze))
 
 dx = [1,-1,0,0]
 dy = [0,0,-1,1]
