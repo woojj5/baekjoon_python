@@ -1,8 +1,9 @@
 import sys
+input = sys.stdin.readline
 
-n,m,b = map(int, sys.stdin.readline().split())
-field =  [list(map(int, sys.stdin.readline().split())) for i in range(n)]
-ans = sys.maxsize
+n,m,b = map(int, input().split())
+field =  [list(map(int, input().split())) for i in range(n)]
+ans = 1e9
 glevl = 0
 for i in range(257):
     use = 0
@@ -13,9 +14,11 @@ for i in range(257):
                 tak+= field[x][y]  - i
             else:   
                 use+= i - field[x][y]
-    if use <= tak + b:
-        if use + tak * 2 <= ans:
-            ans = use + tak*2 
-            glevl = i
+    if use > tak + b:
+        continue
+    count = tak * 2 + use
+
+    if count <= ans:
+        ans = count
+        glevl = i
 print(ans, glevl)
-    
