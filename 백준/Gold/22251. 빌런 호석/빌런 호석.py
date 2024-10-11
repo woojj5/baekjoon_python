@@ -28,6 +28,6 @@ for i in range(1, n+1):
                 diff_cnt+=1
             if diff_cnt > p:
                 break
-    if diff_cnt <= p and diff_cnt > 0:
+    if diff_cnt <= p and diff_cnt:
         possible+=1
 print(possible)
