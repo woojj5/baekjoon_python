@@ -1,0 +1,1 @@
+select count(*) as FISH_COUNT from FISH_INFO where Length <= 10 or Length is NULL
