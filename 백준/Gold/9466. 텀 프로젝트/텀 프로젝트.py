@@ -5,6 +5,7 @@ def dfs(s):
     global num
     visit[s] = True
     sel = arr[s]
+    sel-=1
     team.append(s)
     if visit[sel]:
         if sel in team:
@@ -14,10 +15,10 @@ def dfs(s):
 it = int(input())
 for t in range(it):
     n = int(input())
-    arr = [0] + list(map(int, input().split()))
-    visit = [False] * (n+1)
+    arr = list(map(int, input().split()))
+    visit = [False] * (n)
     num = 0
-    for i in range(1, n+1):
+    for i in range(n):
         if not visit[i]:
             team = []
             dfs(i)
