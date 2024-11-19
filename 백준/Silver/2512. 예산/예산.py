@@ -1,18 +1,20 @@
 n = int(input())
 lista = list(map(int, input().split()))
-res = int(input())
-if sum(lista) <= res:
-    print(max(lista))
-    exit()
-start = 0; end = res; ans = 0
-while start <= end:
-    mid = (start + end) // 2
-    tmp = 0
-    for ele in lista:
-        tmp += ele if ele <= mid else mid
-    if tmp <= res:
+m = int(input())
+s = 0; e = max(lista)
+ans= 0
+while s<= e:
+    mid = (s+e)//2
+    res = 0
+    for i in range(len(lista)):
+        if mid >= lista[i]:
+            res+= lista[i]
+        else:
+            res+= mid
+
+    if res <=m:
+        s = mid+1
         ans = max(ans, mid)
-        start = mid+1
     else:
-        end = mid-1
+        e = mid-1
 print(ans)
