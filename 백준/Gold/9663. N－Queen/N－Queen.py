@@ -1,22 +1,19 @@
 n = int(input())
-ans = 0
-row = [0] * n
-
-def check(x):
+node = [0] * n
+def promise(x):
     for i in range(x):
-        if x == i or row[i] == row[x] or abs(row[i] - row[x]) == abs(x-i):
+        if node[i] == node[x] or abs(i-x) == abs(node[i] - node[x]):
             return False
     return True
-    
-
-def n_queens(x):
-    global ans
+cnt = 0
+def nqueens(x):
+    global cnt
     if x == n:
-        ans+=1
-        return 
+        cnt +=1
+        return
     for i in range(n):
-        row[x] = i
-        if check(x):
-            n_queens(x+1)
-n_queens(0)
-print(ans)
+        node[x] = i
+        if promise(x):
+            nqueens(x+1)
+nqueens(0)
+print(cnt)
