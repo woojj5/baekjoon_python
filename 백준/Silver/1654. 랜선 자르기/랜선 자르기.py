@@ -1,14 +1,14 @@
-n,k = map(int, input().split())
-lista = [int(input()) for i in range(n)]
-s = 1
-e = max(lista)
-while s<= e:
-    m = (s+e)//2
-    line = 0
-    for i in lista:
-        line+= i//m
-    if line >= k:
-        s = m+1
+n,m = map(int, input().split())
+arr = [int(input()) for i in range(n)]
+s,e = 1, max(arr)
+
+while s<=e:
+    res = 0
+    mid = int((s+e)/2)
+    for i in range(n):
+        res+=int(arr[i]//mid)
+    if res >= m:
+        s = mid+1
     else:
-        e = m-1
+        e = mid-1
 print(e)
