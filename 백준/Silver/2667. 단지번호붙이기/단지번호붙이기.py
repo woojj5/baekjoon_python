@@ -1,34 +1,28 @@
 from collections import deque
+n = int(input())
+arr = [list(map(int, input())) for _ in range(n)]
+visit = [[0] * n for _ in range(n)]
 
-def bfs(s1,s2):
-    res = 1
+def bfs(i,j):
+    cnt = 1
     q = deque()
-    q.append([s1,s2])
-    visit[s1][s2] = 1
+    q.append([i,j])
+    visit[i][j] = 1
     while q:
         x,y = q.popleft()
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if 0<= nx < a and 0<= ny < a and visit[nx][ny] == 0 and arr[nx][ny] == 1:
+        for nx, ny in [(x+1, y), (x-1, y), (x,y+1),(x, y-1)]:
+            if 0<=nx<n and 0<=ny<n and arr[nx][ny ]and not visit[nx][ny]:
                 visit[nx][ny] = 1
                 q.append([nx, ny])
-                res = res + 1
-    return res
-a = int(input())
-arr = []
-visit = [[0] * a for i in range(a)]
-for i in range(a):
-    arr.append(list(map(int, input().rstrip())))
+                cnt+=1
+    return cnt
 
-dx = [-1,1,0,0]
-dy = [0,0,-1,1]
-res_a = []
-for i in range(a):
-    for j in range(a):
-        if arr[i][j] == 1 and visit[i][j] == 0:
-            res_a.append(bfs(i,j))
-res_a.sort()
-print(len(res_a))
-for i in res_a:
-    print(i)
+result = []
+for i in range(n):
+    for j in range(n):
+        if arr[i][j] and not visit[i][j]:
+            result.append(bfs(i,j))
+print(len(result))
+result.sort()
+for r in result:
+    print(r)
