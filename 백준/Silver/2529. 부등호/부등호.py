@@ -20,8 +20,7 @@ def dfs(level):
         ans.append(''.join(map(str, res)))
         return
     for i in range(10):
-        if i not in res:
-            if level == 0 or operator(res[level-1], i, op[level-1]):
+        if i not in res and (level == 0 or operator(res[level-1], i, op[level-1])):
                 res.append(i)
                 dfs(level+1)
                 res.pop()
