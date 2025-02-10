@@ -1,4 +1,5 @@
 from itertools import permutations
+    
 def prime(r):
     cnt = 0
     for i in range(2, int(r**0.5) + 1):
